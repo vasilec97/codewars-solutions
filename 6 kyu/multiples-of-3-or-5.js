@@ -1,15 +1,5 @@
 function solution(n){
-  if (n === 0 || isNaN(n) || Math.sign(n) === -1) return 0;
+  if (n <= 0 || isNaN(n)) return 0;
   
-  let numberArr = [];
-  
-  for (let i = 1; i < n; i++) {
-    if (Number.isInteger(i / 3) || Number.isInteger(i / 5)) {
-      if (!numberArr.includes(i)) {
-        numberArr.push(i)
-      }
-    }
-  }
-  
-  return numberArr.reduce((a, c) => a + c, 0);
+  return [...new Array(n - 1)].map((_, i) => i + 1).filter(n => n % 3 == 0 || n % 5 === 0).reduce((a, b) => a + b, 0)
 }
